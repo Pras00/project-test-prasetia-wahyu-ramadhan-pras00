@@ -1,0 +1,162 @@
+body {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+
+/* Navbar */
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40rem;
+  padding: 20px 0;
+  background-color: #e26b03;
+  width: 100%;
+  position: fixed;
+  z-index: 10;
+  transition: top 0.3s ease, background-color 0.3s ease;
+}
+
+.navbar > img {
+  width: 7%;
+}
+
+.navbar > h1 {
+  color: white;
+}
+
+.navigation {
+  display: flex;
+  gap: 2rem;
+}
+
+.navigation > a {
+  text-decoration: none;
+  color: white;
+  border-bottom: 2px solid rgba(237, 99, 7, 0.9);
+  transition-duration: 50ms;
+}
+
+.navigation > a:hover {
+  border-bottom: 2px solid white;
+}
+
+.navigation > a:focus {
+  border-bottom: 2px solid white;
+}
+
+
+/* Banner */
+
+.banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16rem 0;
+  position: relative;
+  background-image: url('https://raw.githubusercontent.com/Pras00/imgHTML/main/banner.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-bottom: 4rem;
+  transition: background-position 0.5s ease; /* Efek transisi smooth */
+}
+
+.header > h1 {
+  text-align: center;
+  color: white;
+  margin-bottom: 0;
+}
+
+.content > p {
+  text-align: center;
+  color: white;
+}
+
+
+/* Filter */
+
+.filter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10rem;
+}
+
+.filterFunc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5rem;
+}
+
+select {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+select:hover {
+  border-color: #888;
+}
+
+#pageNumbers {
+  display: flex;
+  align-items: center;
+}
+
+#pageNumbers button {
+  width: 30px; /* Sesuaikan dengan lebar yang diinginkan */
+  margin: 0 5px;
+  padding: 5px 10px;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#pageNumbers button.active {
+  background-color: orange;
+  color: white;
+}
+
+#pageNumbers button:not(.active):hover {
+  background-color: #f8f8f8; /* Ganti dengan warna transparan yang diinginkan */
+}
+
+#pagination {
+  display: flex;
+  margin: 2rem 0;
+}
+
+#pageNumbers > button {
+  border: none;
+  background-color: white ;
+  border-radius: 10px;
+}
+
+#nextButton, #prevButton {
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 10px 15px;
+  background-color: orange;
+  color: white;
+  font-weight: 700;
+}
+
+.items {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 6rem;
+}
+
+
+
+
