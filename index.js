@@ -21,48 +21,20 @@ window.onscroll = function() {
 document.addEventListener("scroll", function() {
   const scrollPosition = window.scrollY;
   const parallaxElement = document.getElementById("parallax");
-
-  // Adjust background-position based on scroll position
   parallaxElement.style.backgroundPosition = `50% ${scrollPosition * 0.2}px`;
 });
 
 
 
-
-// Filter
-const Data = [
-  { 
-    created_at: "2023-07-11 17:30:17",
-    deleted_at: null,
-    id: 279,
-    published_at: "2023-07-14 12:00:00",
-    slug: "balanced-scorecard-pengertian-manfaat-dan-perspektif",
-    title: "Balanced Scorecard: Pengertian, Manfaat dan Perspektif",
-    updated_at: "2023-07-11 17:30:17"
-  },
-  {
-    created_at: "2023-07-11 16:19:12",
-    deleted_at: null,
-    id: 278,
-    published_at: "22023-07-12 12:00:00",
-    slug: "System-design-pengertian-prinsip-dan-jenis",
-    title: "System Design: Pengertian, Prinsip, dan Jenis",
-    updated_at: "2023-07-11 16:19:12"
-  },
-  {
-    created_at: "2023-06-27 11:26:39",
-    deleted_at: null,
-    id: 277,
-    published_at: "2023-06-28 12:00:00",
-    slug: "devops-arti-manfaat-metode-dan-contoh",
-    title: "DevOps: Arti, Manfaat, Metode, dan Contoh",
-    updated_at: "2023-07-05 09:30:53"
-  },
-];
-
-
 let currentPage = 1;
 let itemsPerPage = 10;
+let Data = []; // Menyimpan data dari API
+
+// Fungsi untuk mengubah format tanggal
+function formatTanggal(tanggal) {
+  const options = { day: 'numeric', month: 'long', year: 'numeric' };
+  return new Date(tanggal).toLocaleDateString('id-ID', options);
+}
 
 function renderData() {
   const dataList = document.getElementById('dataList');
@@ -74,11 +46,28 @@ function renderData() {
   const sortedData = sortDataByDate(Data);
   const paginatedData = sortedData.slice(startIndex, endIndex);
 
+  let imageNumber = 1;
+
   paginatedData.forEach(item => {
-    const li = document.createElement('li');
-    li.textContent = `${item.title} - ${item.date}`;
-    dataList.appendChild(li);
+    const div = document.createElement('div');
+    div.setAttribute('class', 'dataItems');
+    dataList.appendChild(div);
+  
+    // Gunakan imageNumber untuk menentukan nomor urutan gambar
+    div.innerHTML = `
+      <div class="itemImg">
+        <img loading="lazy" src="https://raw.githubusercontent.com/Pras00/imgHTML/main/suitmedia${imageNumber}.jpg" alt="ItemImg">
+      </div>
+      <div class="itemDesc">
+        <h3>${formatTanggal(item.created_at)}</h3>
+        <h2>${item.title}</h2>
+      </div>
+    `;
+  
+    // Update nomor urutan gambar untuk urutan selanjutnya
+    imageNumber = (imageNumber % 2) + 1;
   });
+  
 
   const itemCount = sortedData.length;
   const showingInfo = document.getElementById('showingInfo');
@@ -94,6 +83,7 @@ function renderData() {
   // Generate page numbers
   renderPageNumbers();
 }
+
 
 function renderPageNumbers() {
   const pageNumbersContainer = document.getElementById('pageNumbers');
@@ -171,19 +161,20 @@ function goToPage(pageNumber) {
   renderData();
 }
 
-// Initial rendering
-renderData();
-
-
 
 // Fetch API
 const apiUrl = 'https://suitmedia-backend.suitdev.com/api/ideas';
 
-axios.get(apiUrl)
-  .then(response => {
-    const Data = response.data.data
-    console.log(Data);
-  })
-  .catch(error => {
+async function fetchData() {
+  try {
+    const response = await axios.get(apiUrl);
+    Data = response.data.data;
+    renderData();
+  } catch (error) {
     console.error('There was an error with the request', error);
-  });
+  }
+}
+
+// Panggil fungsi fetchData
+fetchData();
+

@@ -56,24 +56,27 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 16rem 0;
+  padding: 14rem 0;
   position: relative;
-  background-image: url('https://raw.githubusercontent.com/Pras00/imgHTML/main/banner.png');
+  background-image: url('https://raw.githubusercontent.com/Pras00/imgHTML/main/Banner.png');
   background-repeat: no-repeat;
   background-size: cover;
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
   transition: background-position 0.5s ease; /* Efek transisi smooth */
 }
 
 .header > h1 {
   text-align: center;
   color: white;
+  font-size: 70px;
+  font-weight: 700;
   margin-bottom: 0;
 }
 
 .content > p {
   text-align: center;
   color: white;
+  font-size: 20px;
 }
 
 
@@ -94,9 +97,8 @@ body {
 }
 
 select {
-  padding: 8px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  padding: 8px 15px;
+  border: 2px solid #afafaf;
   cursor: pointer;
   border-radius: 20px;
 }
@@ -111,7 +113,7 @@ select:hover {
 }
 
 #pageNumbers button {
-  width: 30px; /* Sesuaikan dengan lebar yang diinginkan */
+  width: 30px;
   margin: 0 5px;
   padding: 5px 10px;
   border: 1px solid #ddd;
@@ -120,17 +122,17 @@ select:hover {
 }
 
 #pageNumbers button.active {
-  background-color: orange;
+  background-color: #ff7700;
   color: white;
 }
 
 #pageNumbers button:not(.active):hover {
-  background-color: #f8f8f8; /* Ganti dengan warna transparan yang diinginkan */
+  background-color: #f8f8f8;
 }
 
 #pagination {
   display: flex;
-  margin: 2rem 0;
+  margin: 3rem 0;
 }
 
 #pageNumbers > button {
@@ -144,7 +146,7 @@ select:hover {
   border-radius: 10px;
   cursor: pointer;
   padding: 10px 15px;
-  background-color: orange;
+  background-color: #ff7700;
   color: white;
   font-weight: 700;
 }
@@ -158,5 +160,51 @@ select:hover {
 }
 
 
+.itemImg > img {
+  width: 100%;
+  height: 150px;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
 
+#dataList {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 3rem;
+  padding: 0 7rem;
+}
 
+.dataItems {
+  width: 20%;
+  height: 300px;
+  min-width: 100px;
+  border-radius: 10px;
+  box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.15);
+  transition-duration: 200ms;
+}
+
+.dataItems:hover {
+  scale: 1.05;
+}
+
+.itemDesc {
+  padding: 0 20px;
+} 
+
+.itemDesc > h3 {
+  color: #888;
+  font-size: 16px;
+}
+
+.itemDesc > h2 {
+  font-size: 24px;
+  padding: 0;
+  margin-top: -10px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Maksimal 3 baris */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
