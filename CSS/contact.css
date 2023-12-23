@@ -1,0 +1,83 @@
+body {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Navbar */
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40rem;
+  padding: 20px 0;
+  background-color: #e26b03;
+  width: 100%;
+  position: fixed;
+  z-index: 10;
+  transition: top 0.3s ease, background-color 0.3s ease;
+}
+
+.navbar > img {
+  width: 7%;
+}
+
+.navbar > h1 {
+  color: white;
+}
+
+.navigation > .contact {
+  border-bottom: 2px solid white;
+}
+
+.navigation {
+  display: flex;
+  gap: 2rem;
+}
+
+.navigation > a {
+  text-decoration: none;
+  color: white;
+  border-bottom: 2px solid rgba(237, 99, 7, 0.9);
+  transition-duration: 50ms;
+}
+
+.navigation > a:hover {
+  border-bottom: 2px solid white;
+}
+
+.navigation > a:focus {
+  border-bottom: 2px solid white;
+}
+
+
+/* Banner */
+
+.banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 14rem 0;
+  position: relative;
+  background-image: url('https://raw.githubusercontent.com/Pras00/imgHTML/main/Banner.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-bottom: 3rem;
+  transition: background-position 0.5s ease; /* Efek transisi smooth */
+}
+
+.header > h1 {
+  text-align: center;
+  color: white;
+  font-size: 70px;
+  font-weight: 700;
+  margin-bottom: 0;
+}
+
+.content > p {
+  text-align: center;
+  color: white;
+  font-size: 20px;
+}

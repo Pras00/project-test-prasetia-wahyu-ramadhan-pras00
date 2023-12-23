@@ -1,41 +1,15 @@
-// Navbar
-
-const navbar = document.getElementById('navbar');
-let prevScrollPos = window.scrollY;
-
-window.onscroll = function() {
-  const currentScrollPos = window.scrollY;
-  
-  if (prevScrollPos > currentScrollPos) {
-    navbar.style.top = '0';
-    navbar.style.backgroundColor = 'rgba(237, 99, 7, 0.9)';
-  } else {
-    navbar.style.top = `-${navbar.offsetHeight}px`;
-    navbar.style.backgroundColor = 'transparent';
-  }
-
-  prevScrollPos = currentScrollPos;
-};
-
-
-document.addEventListener("scroll", function() {
-  const scrollPosition = window.scrollY;
-  const parallaxElement = document.getElementById("parallax");
-  parallaxElement.style.backgroundPosition = `50% ${scrollPosition * 0.2}px`;
-});
-
-
-
 let currentPage = 1;
 let itemsPerPage = 10;
-let Data = []; // Menyimpan data dari API
+let Data = [];
 
-// Fungsi untuk mengubah format tanggal
+// Format Tanggal
 function formatTanggal(tanggal) {
   const options = { day: 'numeric', month: 'long', year: 'numeric' };
   return new Date(tanggal).toLocaleDateString('id-ID', options);
 }
 
+
+// Menampilkan Data
 function renderData() {
   const dataList = document.getElementById('dataList');
   dataList.innerHTML = '';
@@ -53,10 +27,9 @@ function renderData() {
     div.setAttribute('class', 'dataItems');
     dataList.appendChild(div);
   
-    // Gunakan imageNumber untuk menentukan nomor urutan gambar
     div.innerHTML = `
-      <div class="itemImg">
-        <img loading="lazy" src="https://raw.githubusercontent.com/Pras00/imgHTML/main/suitmedia${imageNumber}.jpg" alt="ItemImg">
+      <div class="itemImg loading">
+        <img loading="lazy" src="https://raw.githubusercontent.com/Pras00/imgHTML/main/suitmedia${imageNumber}.jpg?${Date.now()}" alt="ItemImg">
       </div>
       <div class="itemDesc">
         <h3>${formatTanggal(item.created_at)}</h3>
@@ -64,8 +37,14 @@ function renderData() {
       </div>
     `;
   
-    // Update nomor urutan gambar untuk urutan selanjutnya
     imageNumber = (imageNumber % 2) + 1;
+  });
+  
+  // Loading
+  document.querySelectorAll('.itemImg img').forEach(img => {
+    img.addEventListener('load', () => {
+      img.closest('.itemImg').classList.remove('loading');
+    });
   });
   
 
@@ -73,18 +52,16 @@ function renderData() {
   const showingInfo = document.getElementById('showingInfo');
   showingInfo.textContent = `Showing ${startIndex + 1} - ${Math.min(endIndex, itemCount)} of ${itemCount}`;
 
-  // Enable or disable "Next" and "Previous" buttons
   const prevButton = document.getElementById('prevButton');
   const nextButton = document.getElementById('nextButton');
 
   prevButton.disabled = currentPage === 1;
   nextButton.disabled = endIndex >= itemCount;
 
-  // Generate page numbers
   renderPageNumbers();
 }
 
-
+// Render Page Numbers
 function renderPageNumbers() {
   const pageNumbersContainer = document.getElementById('pageNumbers');
   pageNumbersContainer.innerHTML = '';
@@ -113,6 +90,7 @@ function renderPageNumbers() {
   }
 }
 
+// Sort by Date
 function sortDataByDate(data) {
   const sortValue = document.getElementById('sort').value;
 
@@ -128,6 +106,7 @@ function sortDataByDate(data) {
   });
 }
 
+// Update Page
 function updatePerPage() {
   itemsPerPage = parseInt(document.getElementById('perPage').value);
   currentPage = 1;

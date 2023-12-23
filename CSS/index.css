@@ -4,7 +4,6 @@ body {
   font-family: 'Arial', sans-serif;
 }
 
-
 /* Navbar */
 
 .navbar {
@@ -26,6 +25,10 @@ body {
 
 .navbar > h1 {
   color: white;
+}
+
+.navigation > .ideas {
+  border-bottom: 2px solid white;
 }
 
 .navigation {
