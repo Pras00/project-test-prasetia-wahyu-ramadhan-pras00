@@ -59,10 +59,13 @@
       <div id="dataList"></div>
     
       <div id="pagination">
-        <button id="prevButton" onclick="prevPage()" disabled>Previous</button>
+        <button id="firstPageButton" onclick="goToFirstPage()">&lt;&lt; First</button>
+        <button id="prevButton" onclick="prevPage()" disabled>&lt;</button>
         <div id="pageNumbers"></div>
-        <button id="nextButton" onclick="nextPage()">Next</button>
+        <button id="nextButton" onclick="nextPage()">&gt;</button>
+        <button id="lastPageButton" onclick="goToLastPage()">Last &gt;&gt;</button>
       </div>
+      
     </div>
   </div>
 

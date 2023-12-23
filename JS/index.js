@@ -106,6 +106,20 @@ function sortDataByDate(data) {
   });
 }
 
+// Go First - Last Page
+function goToFirstPage() {
+  currentPage = 1;
+  renderData();
+}
+
+function goToLastPage() {
+  const sortedData = sortDataByDate(Data);
+  const pageCount = Math.ceil(sortedData.length / itemsPerPage);
+  currentPage = pageCount;
+  renderData();
+}
+
+
 // Update Page
 function updatePerPage() {
   itemsPerPage = parseInt(document.getElementById('perPage').value);
